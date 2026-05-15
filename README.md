@@ -64,3 +64,29 @@ PENDING ──► PAID ──► PACKING ──► SHIPPED ──► DELIVERED
 - Once `CANCELLED`, the status cannot be changed back.
 
 ---
+## Key Classes
+
+### `OrderRecord`
+The main entity persisted to `orders.jsonl`. Stores order number, customer snapshot (name, email), shipping address, note, status, timestamps, and the list of `OrderItem`s.
+
+Computed helpers (annotated `@JsonIgnore`, not persisted):
+- `getGrandTotal()` — sum of all line totals
+- `getItemCount()` — total quantity across all items
+- `getStatusTone()` — CSS class name for status badge colouring
+
+### `OrderItem`
+A snapshot of a book at the time of purchase: book ID, title, format label, quantity, and unit price. Stock changes do not affect historical order items.
+
+Computed helper:
+- `getLineTotal()` — `unitPrice × quantity`
+
+### `OrderStatus` (enum)
+`PENDING`, `PAID`, `PACKING`, `SHIPPED`, `DELIVERED`, `CANCELLED`
+
+### `CheckoutForm`
+Validated with `@NotBlank` on `shippingAddress`. Optional free-text `note` field.
+
+### `OrderStatusForm`
+Validated with `@NotNull` on `status`. Used by the admin update endpoint.
+
+---
