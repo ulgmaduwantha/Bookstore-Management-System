@@ -121,3 +121,8 @@ This module integrates with the following team members' work:
 | `IdGenerator` | Generating unique order IDs and human-readable order numbers |
 
 ---
+## Data Storage
+
+Orders are persisted as JSON Lines in the file configured by `StorageProperties` (`application.properties` key: `storage.orders-file`, default `data/orders.jsonl`). Each line is one serialised `OrderRecord`. The `JsonLineFileRepository` base class handles thread-safe read/write/delete.
+
+---
