@@ -126,3 +126,12 @@ This module integrates with the following team members' work:
 Orders are persisted as JSON Lines in the file configured by `StorageProperties` (`application.properties` key: `storage.orders-file`, default `data/orders.jsonl`). Each line is one serialised `OrderRecord`. The `JsonLineFileRepository` base class handles thread-safe read/write/delete.
 
 ---
+## Templates
+
+### `orders.html` (Customer)
+Displays an order timeline for the current customer. Each order card shows: order number, date/time, status badge, itemised list with line totals, shipping address, grand total, and a Cancel button when the order is still eligible for cancellation.
+
+### `admin/orders.html` (Admin)
+Displays all orders with a search bar and status filter at the top. Each card includes customer details, itemised list, totals, a status dropdown with an Update button, and a Delete button. The eyebrow label on this page is tagged `Member 4` to identify module ownership.
+
+---
