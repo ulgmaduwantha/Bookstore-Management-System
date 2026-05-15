@@ -50,3 +50,17 @@ src/
 - **Delete Order** — Only `CANCELLED` or `DELIVERED` orders may be deleted.
 
 ---
+## Order Status Flow
+
+```
+PENDING ──► PAID ──► PACKING ──► SHIPPED ──► DELIVERED
+   │                                │
+   └──────────────── CANCELLED ◄────┘
+        (stock restored on cancel)
+```
+
+- Customers can cancel from `PENDING` or `PAID` or `PACKING` states.
+- Admins can cancel from any state except `DELIVERED`.
+- Once `CANCELLED`, the status cannot be changed back.
+
+---
