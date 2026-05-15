@@ -107,3 +107,17 @@ Admin endpoints (handled in `AdminController`, listed here for context):
 | `POST` | `/admin/orders/{id}/delete` | Delete a completed/cancelled order |
 
 ---
+## Dependencies on Other Modules
+
+This module integrates with the following team members' work:
+
+| Dependency | Used For |
+|---|---|
+| `CartService` | Reading cart items at checkout; clearing cart after order placed |
+| `BookService` | Stock validation at checkout; `decreaseStock` / `increaseStock` |
+| `CustomerService` | Looking up the customer entity by ID |
+| `SessionService` | Resolving the current logged-in customer from the HTTP session |
+| `JsonLineFileRepository` | Base class for `OrderRepository`; handles JSONL persistence |
+| `IdGenerator` | Generating unique order IDs and human-readable order numbers |
+
+---
