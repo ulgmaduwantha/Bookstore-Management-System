@@ -135,3 +135,12 @@ Displays an order timeline for the current customer. Each order card shows: orde
 Displays all orders with a search bar and status filter at the top. Each card includes customer details, itemised list, totals, a status dropdown with an Update button, and a Delete button. The eyebrow label on this page is tagged `Member 4` to identify module ownership.
 
 ---
+## How to Test This Module
+
+1. Register a customer account and add books to the cart.
+2. Proceed to checkout — submit a shipping address to place an order.
+3. Visit `/orders` to confirm the order appears with `PENDING` status.
+4. Cancel the order from the customer orders page and verify stock is restored via the admin books view.
+5. Log in as admin, go to `/admin/orders`, and update the order status through the pipeline.
+6. Verify that cancellation from the admin panel also restores stock.
+7. Delete a `CANCELLED` or `DELIVERED` order and confirm it no longer appears.
