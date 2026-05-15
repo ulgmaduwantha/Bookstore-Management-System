@@ -90,3 +90,20 @@ Validated with `@NotBlank` on `shippingAddress`. Optional free-text `note` field
 Validated with `@NotNull` on `status`. Used by the admin update endpoint.
 
 ---
+## HTTP Endpoints
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| `GET`  | `/orders` | Customer order history page |
+| `POST` | `/orders/checkout` | Place a new order from cart |
+| `POST` | `/orders/{orderId}/cancel` | Customer cancels an order |
+
+Admin endpoints (handled in `AdminController`, listed here for context):
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| `GET`  | `/admin/orders` | Admin order list with search & filter |
+| `POST` | `/admin/orders/{id}/status` | Update order status |
+| `POST` | `/admin/orders/{id}/delete` | Delete a completed/cancelled order |
+
+---
