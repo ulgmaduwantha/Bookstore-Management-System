@@ -36,3 +36,17 @@ src/
 ```
 
 ---
+## Responsibilities
+
+### Customer Features
+- **Checkout** — Customer submits a `CheckoutForm` with a shipping address and optional note. The service validates stock availability, creates the `OrderRecord`, decreases book stock, and clears the cart atomically.
+- **Order History** — `/orders` lists all orders for the logged-in customer, sorted newest first, with item summaries, totals, and statuses.
+- **Cancel Order** — A customer can cancel any order that has not yet been shipped or delivered. Cancelling restores book stock automatically.
+
+### Admin Features (integrated into `AdminController` / admin views)
+- **View All Orders** — `/admin/orders` lists every order in the system with search (by order number, customer name, or email) and status filter.
+- **Update Status** — Admin can move an order through the status pipeline: `PENDING → PAID → PACKING → SHIPPED → DELIVERED`. Cancelled orders cannot be re-opened.
+- **Cancel & Stock Restore** — Admin status update to `CANCELLED` automatically restores stock for every item in the order.
+- **Delete Order** — Only `CANCELLED` or `DELIVERED` orders may be deleted.
+
+---
